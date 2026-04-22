@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Pixolyze \u2013 Professional photo editing, graphic design, branding, and social media content creation for brands & creators."/>
+<meta name="description" content="Pixolyze – Professional photo editing, graphic design, branding, and social media content creation for brands & creators."/>
 <meta name="keywords" content="photo editing, graphic design, branding, social media content, Pixolyze"/>
-<title>Pixolyze \u2013 Transforming Pixels into Perfection</title>
+<title>Pixolyze – Transforming Pixels into Perfection</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
@@ -157,4 +157,689 @@
     text-transform:uppercase; color:var(--electric); margin-bottom:16px;
   }
   .section-title {
-    font-family:'
+    font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:800;
+    letter-spacing:-.03em; line-height:1.1; margin-bottom:20px;
+  }
+  .section-sub { color:var(--muted); font-size:1.05rem; max-width:520px; line-height:1.7; font-weight:300; }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow:hidden; background:linear-gradient(135deg,var(--violet),var(--indigo),var(--blue));
+    padding:18px 0;
+  }
+  .marquee { display:flex; gap:60px; animation:marquee 20s linear infinite; white-space:nowrap; }
+  .marquee span { font-family:'Syne',sans-serif; font-size:.875rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; opacity:.9; }
+  .marquee span::before { content:'✦'; margin-right:60px; }
+  @keyframes marquee { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+
+  /* ABOUT */
+  #about { background:var(--dark2); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; max-width:1200px; margin:0 auto; }
+  .about-visual {
+    position:relative; aspect-ratio:1; max-width:480px;
+  }
+  .about-card-main {
+    width:100%; height:100%; border-radius:24px;
+    background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(59,130,246,.1));
+    border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .about-card-main::before {
+    content:''; position:absolute; inset:0;
+    background:conic-gradient(from 0deg at 50% 50%, transparent 0%, rgba(124,58,237,.15) 25%, transparent 50%, rgba(59,130,246,.1) 75%, transparent 100%);
+    animation:spin 12s linear infinite;
+  }
+  @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .about-icon-wrap { position:relative; z-index:1; text-align:center; }
+  .about-big-icon { font-size:6rem; display:block; filter:drop-shadow(0 0 40px rgba(124,58,237,.6)); animation:float 4s ease-in-out infinite; }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .about-stat-chip {
+    position:absolute; background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    padding:12px 18px; font-family:'Syne',sans-serif;
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+  }
+  .about-stat-chip .num { font-size:1.4rem; font-weight:800; background:linear-gradient(135deg,var(--electric),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .about-stat-chip .lab { font-size:.7rem; color:var(--muted); font-family:'DM Sans',sans-serif; }
+  .chip1 { top:-20px; right:-20px; }
+  .chip2 { bottom:-20px; left:-20px; }
+  .chip3 { bottom:40px; right:-30px; }
+
+  .about-content { }
+  .about-tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
+  .tag { background:rgba(124,58,237,.1); border:1px solid rgba(124,58,237,.2); color:var(--glow); padding:6px 16px; border-radius:100px; font-size:.8rem; font-weight:500; }
+
+  /* SERVICES */
+  #services { background:var(--dark); }
+  .services-header { text-align:center; max-width:600px; margin:0 auto 64px; }
+  .services-header .section-sub { margin:0 auto; }
+  .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1200px; margin:0 auto; }
+  .service-card {
+    background:var(--dark3); border:1px solid var(--border); border-radius:20px;
+    padding:36px 32px; position:relative; overflow:hidden;
+    transition:transform .3s, border-color .3s, box-shadow .3s;
+    cursor:none;
+  }
+  .service-card::before {
+    content:''; position:absolute; inset:0; border-radius:20px;
+    background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(59,130,246,.04));
+    opacity:0; transition:opacity .3s;
+  }
+  .service-card:hover { transform:translateY(-6px); border-color:rgba(124,58,237,.5); box-shadow:0 20px 60px rgba(124,58,237,.15); }
+  .service-card:hover::before { opacity:1; }
+  .svc-icon {
+    width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; margin-bottom:24px; position:relative;
+  }
+  .svc-icon::after { content:''; position:absolute; inset:0; border-radius:16px; opacity:.15; }
+  .svc-i1 { background:rgba(168,85,247,.15); } .svc-i1::after { background:var(--electric); }
+  .svc-i2 { background:rgba(59,130,246,.15); } .svc-i2::after { background:var(--blue); }
+  .svc-i3 { background:rgba(6,182,212,.15); } .svc-i3::after { background:var(--cyan); }
+  .svc-i4 { background:rgba(99,102,241,.15); } .svc-i4::after { background:var(--indigo); }
+  .svc-title { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700; margin-bottom:12px; }
+  .svc-desc { color:var(--muted); font-size:.9rem; line-height:1.7; font-weight:300; }
+  .svc-arrow { display:inline-flex; align-items:center; gap:6px; margin-top:20px; font-size:.8rem; color:var(--electric); font-weight:500; transition:gap .2s; }
+  .service-card:hover .svc-arrow { gap:10px; }
+
+  /* PORTFOLIO */
+  #portfolio { background:var(--dark2); }
+  .portfolio-header { max-width:1200px; margin:0 auto 48px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+  .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto; gap:20px; max-width:1200px; margin:0 auto; }
+  .port-item {
+    border-radius:16px; overflow:hidden; position:relative; cursor:none;
+    background:var(--dark3); border:1px solid var(--border);
+    aspect-ratio:4/3;
+  }
+  .port-item:first-child { grid-column:span 2; aspect-ratio:unset; }
+  .port-item:nth-child(4) { grid-column:span 2; aspect-ratio:unset; }
+  .port-item.tall { aspect-ratio:3/4; }
+  .port-bg {
+    width:100%; height:100%; min-height:220px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:3rem; transition:transform .5s;
+    position:relative;
+  }
+  .port-item:hover .port-bg { transform:scale(1.06); }
+  .p1 { background:linear-gradient(135deg,#1a0533,#3b0764,#7c3aed20); }
+  .p2 { background:linear-gradient(135deg,#0a1628,#1e3a5f,#3b82f620); }
+  .p3 { background:linear-gradient(135deg,#021212,#0a4444,#06b6d420); }
+  .p4 { background:linear-gradient(135deg,#1c0030,#4a0080,#a855f720); }
+  .p5 { background:linear-gradient(135deg,#0a0a2e,#1a1a6e,#4f46e520); }
+  .port-overlay {
+    position:absolute; inset:0; background:linear-gradient(to top,rgba(7,7,18,.95) 0%,transparent 60%);
+    display:flex; align-items:flex-end; padding:24px;
+    opacity:0; transition:opacity .3s;
+  }
+  .port-item:hover .port-overlay { opacity:1; }
+  .port-info { }
+  .port-tag { font-size:.7rem; color:var(--electric); letter-spacing:.1em; text-transform:uppercase; font-weight:600; }
+  .port-name { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-top:4px; }
+
+  /* BEFORE/AFTER */
+  .ba-strip { max-width:1200px; margin:40px auto 0; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .ba-card {
+    border-radius:16px; overflow:hidden; position:relative; border:1px solid var(--border);
+    background:var(--dark3); padding:0;
+  }
+  .ba-label {
+    position:absolute; top:16px; left:16px; z-index:2;
+    background:rgba(7,7,18,.8); backdrop-filter:blur(8px);
+    padding:5px 14px; border-radius:100px; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .ba-label.before { color:#f87171; border:1px solid rgba(248,113,113,.3); }
+  .ba-label.after { color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+  .ba-visual { height:220px; display:flex; align-items:center; justify-content:center; font-size:3.5rem; }
+  .ba-v1 { background:linear-gradient(135deg,#1a1a2e,#2d2d44); filter:saturate(.3) brightness(.6); }
+  .ba-v2 { background:linear-gradient(135deg,#0d0d26,#7c3aed30,#3b82f620); filter:saturate(1.4) brightness(1.1); }
+
+  /* TESTIMONIALS */
+  #testimonials { background:var(--dark); }
+  .testi-header { text-align:center; max-width:600px; margin:0 auto 56px; }
+  .testi-header .section-sub { margin:0 auto; }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; max-width:1200px; margin:0 auto; }
+  .testi-card {
+    background:var(--dark3); border:1px solid var(--border); border-radius:20px; padding:32px;
+    transition:border-color .3s, transform .3s;
+    cursor:none;
+  }
+  .testi-card:hover { border-color:rgba(168,85,247,.4); transform:translateY(-4px); }
+  .testi-stars { color:#fbbf24; font-size:.9rem; margin-bottom:16px; letter-spacing:2px; }
+  .testi-text { color:var(--muted); font-size:.95rem; line-height:1.75; font-weight:300; font-style:italic; margin-bottom:24px; }
+  .testi-author { display:flex; align-items:center; gap:14px; }
+  .testi-avatar {
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; font-weight:700; font-family:'Syne',sans-serif; flex-shrink:0;
+  }
+  .av1 { background:linear-gradient(135deg,var(--violet),var(--electric)); }
+  .av2 { background:linear-gradient(135deg,var(--blue),var(--cyan)); }
+  .av3 { background:linear-gradient(135deg,var(--indigo),var(--violet)); }
+  .testi-name { font-family:'Syne',sans-serif; font-weight:700; font-size:.9rem; }
+  .testi-role { color:var(--muted); font-size:.78rem; }
+
+  /* CTA BAND */
+  #cta {
+    padding:100px 60px;
+    background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(59,130,246,.15));
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    text-align:center; position:relative; overflow:hidden;
+  }
+  #cta::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 70% 80% at 50% 50%, rgba(124,58,237,.12) 0%, transparent 70%);
+  }
+  .cta-content { position:relative; z-index:1; max-width:700px; margin:0 auto; }
+  .cta-tagline { color:var(--electric); font-size:.8rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; margin-bottom:16px; }
+  .cta-title { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:20px; }
+  .cta-sub { color:var(--muted); font-size:1.05rem; margin-bottom:40px; font-weight:300; }
+
+  /* CONTACT */
+  #contact { background:var(--dark2); }
+  .contact-wrap { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .contact-info .section-sub { margin-bottom:40px; }
+  .contact-links { display:flex; flex-direction:column; gap:16px; }
+  .contact-link {
+    display:flex; align-items:center; gap:16px; padding:18px 22px;
+    background:var(--dark3); border:1px solid var(--border); border-radius:14px;
+    color:var(--light); text-decoration:none; transition:border-color .2s, transform .2s;
+    cursor:none;
+  }
+  .contact-link:hover { border-color:var(--electric); transform:translateX(4px); }
+  .cl-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .cl-ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); }
+  .cl-em { background:linear-gradient(135deg,var(--violet),var(--blue)); }
+  .cl-text { }
+  .cl-label { font-size:.72rem; color:var(--muted); font-weight:500; letter-spacing:.05em; text-transform:uppercase; }
+  .cl-val { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:600; }
+
+  .contact-form { }
+  .form-group { margin-bottom:20px; }
+  .form-group label { display:block; font-size:.8rem; color:var(--muted); margin-bottom:8px; font-weight:500; letter-spacing:.05em; text-transform:uppercase; }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; background:var(--dark3); border:1px solid var(--border); border-radius:12px;
+    color:var(--light); font-family:'DM Sans',sans-serif; font-size:.95rem;
+    padding:14px 18px; outline:none; transition:border-color .2s, box-shadow .2s;
+    cursor:none;
+  }
+  .form-group textarea { resize:vertical; min-height:120px; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--electric); box-shadow:0 0 0 3px rgba(168,85,247,.1); }
+  .form-group select option { background:var(--dark3); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .submit-btn {
+    width:100%; background:linear-gradient(135deg,var(--violet),var(--blue)); color:#fff;
+    border:none; padding:16px; border-radius:12px; font-family:'Syne',sans-serif;
+    font-size:1rem; font-weight:700; cursor:none; transition:opacity .2s, transform .2s, box-shadow .2s;
+    box-shadow:0 0 30px rgba(124,58,237,.3); letter-spacing:.02em;
+  }
+  .submit-btn:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 0 50px rgba(124,58,237,.5); }
+
+  /* FOOTER */
+  footer {
+    background:var(--dark); border-top:1px solid var(--border);
+    padding:60px; text-align:center;
+  }
+  .footer-logo { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; background:linear-gradient(135deg,var(--electric),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:12px; }
+  .footer-tagline { color:var(--muted); font-size:.9rem; margin-bottom:40px; }
+  .footer-links { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+  .footer-links a { color:var(--muted); text-decoration:none; font-size:.875rem; transition:color .2s; }
+  .footer-links a:hover { color:var(--light); }
+  .footer-copy { color:rgba(160,158,199,.4); font-size:.78rem; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-left { opacity:0; transform:translateX(-40px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal-left.visible { opacity:1; transform:translateX(0); }
+  .reveal-right { opacity:0; transform:translateX(40px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display:none; position:fixed; inset:0; z-index:99; background:rgba(7,7,18,.98); backdrop-filter:blur(20px);
+    flex-direction:column; align-items:center; justify-content:center; gap:32px;
+  }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--light); text-decoration:none; transition:color .2s; }
+  .mobile-menu a:hover { color:var(--electric); }
+  .mobile-close { position:absolute; top:24px; right:24px; background:none; border:none; color:var(--light); font-size:1.8rem; cursor:none; }
+
+  /* RESPONSIVE */
+  @media(max-width:900px) {
+    nav { padding:16px 24px; }
+    nav.scrolled { padding:12px 24px; }
+    .nav-links { display:none; }
+    .nav-cta { display:none; }
+    .hamburger { display:flex; }
+    #hero { padding:120px 24px 80px; }
+    section { padding:80px 24px; }
+    .about-grid { grid-template-columns:1fr; gap:40px; }
+    .about-visual { max-width:100%; aspect-ratio:unset; height:280px; }
+    .portfolio-grid { grid-template-columns:1fr 1fr; }
+    .port-item:first-child, .port-item:nth-child(4) { grid-column:span 2; }
+    .ba-strip { grid-template-columns:1fr; }
+    .contact-wrap { grid-template-columns:1fr; gap:48px; }
+    .form-row { grid-template-columns:1fr; }
+    footer { padding:40px 24px; }
+  }
+  @media(max-width:600px) {
+    .portfolio-grid { grid-template-columns:1fr; }
+    .port-item:first-child, .port-item:nth-child(4) { grid-column:span 1; }
+    .hero-btns { flex-direction:column; align-items:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Pixolyze</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Design · Edit · Inspire</div>
+    <h1 class="hero-h1">Transforming Pixels<br/><span class="grad">into Perfection</span></h1>
+    <p class="hero-sub">Creative design and professional editing for brands & creators. Your vision, crafted with precision.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">View Portfolio</button>
+      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee">
+    <span>Photo Editing</span><span>Graphic Design</span><span>Logo & Branding</span>
+    <span>Social Media</span><span>Visual Identity</span><span>Content Creation</span>
+    <span>Photo Editing</span><span>Graphic Design</span><span>Logo & Branding</span>
+    <span>Social Media</span><span>Visual Identity</span><span>Content Creation</span>
+    <span>Photo Editing</span><span>Graphic Design</span><span>Logo & Branding</span>
+    <span>Social Media</span><span>Visual Identity</span><span>Content Creation</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal-left">
+      <div class="about-card-main">
+        <div class="about-icon-wrap">
+          <span class="about-big-icon">🎨</span>
+          <p style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin-top:12px;background:linear-gradient(135deg,var(--electric),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Your Vision. Our Craft.</p>
+        </div>
+      </div>
+      <div class="about-stat-chip chip1">
+        <div class="num">500+</div>
+        <div class="lab">Projects Done</div>
+      </div>
+      <div class="about-stat-chip chip2">
+        <div class="num">98%</div>
+        <div class="lab">Client Satisfaction</div>
+      </div>
+      <div class="about-stat-chip chip3">
+        <div class="num">4+</div>
+        <div class="lab">Years Experience</div>
+      </div>
+    </div>
+    <div class="about-content reveal-right">
+      <span class="section-label">About Pixolyze</span>
+      <h2 class="section-title">We turn ideas into <span style="background:linear-gradient(135deg,var(--electric),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">visual reality</span></h2>
+      <p class="section-sub" style="margin-bottom:20px;">Pixolyze is a boutique creative studio obsessed with the details that make design extraordinary. We partner with brands, creators, and entrepreneurs to craft visuals that don't just look good — they work hard.</p>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.75;font-weight:300;">From pixel-perfect photo edits to complete brand identities, our team brings strategic thinking and artistic execution to every project. Quality isn't an option — it's our standard.</p>
+      <div class="about-tags">
+        <span class="tag">Creative Direction</span>
+        <span class="tag">Fast Delivery</span>
+        <span class="tag">Premium Quality</span>
+        <span class="tag">Unlimited Revisions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Services built for <span style="background:linear-gradient(135deg,var(--electric),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">modern brands</span></h2>
+    <p class="section-sub">End-to-end creative solutions, tailored to your goals and delivered at the highest standard.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal" style="transition-delay:.05s">
+      <div class="svc-icon svc-i1">📸</div>
+      <h3 class="svc-title">Photo Editing</h3>
+      <p class="svc-desc">Professional retouching, color grading, background removal, and enhancement that elevates your photos to magazine quality.</p>
+      <div class="svc-arrow">Explore →</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.1s">
+      <div class="svc-icon svc-i2">🖌️</div>
+      <h3 class="svc-title">Graphic Design</h3>
+      <p class="svc-desc">Posters, banners, flyers, and digital assets crafted with intentional design thinking and visual storytelling.</p>
+      <div class="svc-arrow">Explore →</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.15s">
+      <div class="svc-icon svc-i3">💎</div>
+      <h3 class="svc-title">Logo & Branding</h3>
+      <p class="svc-desc">Complete brand identity systems — logos, typography, color palettes, and brand guidelines that define who you are.</p>
+      <div class="svc-arrow">Explore →</div>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.2s">
+      <div class="svc-icon svc-i4">📱</div>
+      <h3 class="svc-title">Social Media Content</h3>
+      <p class="svc-desc">Scroll-stopping posts, reels covers, stories, and content calendars optimized for Instagram, TikTok, and beyond.</p>
+      <div class="svc-arrow">Explore →</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div class="reveal">
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Work that speaks</h2>
+    </div>
+    <p class="section-sub reveal" style="max-width:320px;text-align:right;">A curated selection of our finest creative projects.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="port-item reveal" style="transition-delay:.05s">
+      <div class="port-bg p1">🌌</div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <div class="port-tag">Branding</div>
+          <div class="port-name">Nebula Tech — Brand Identity</div>
+        </div>
+      </div>
+    </div>
+    <div class="port-item reveal" style="transition-delay:.1s">
+      <div class="port-bg p2">🎭</div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <div class="port-tag">Photo Editing</div>
+          <div class="port-name">Model Portfolio Retouch</div>
+        </div>
+      </div>
+    </div>
+    <div class="port-item reveal" style="transition-delay:.15s">
+      <div class="port-bg p3">🌊</div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <div class="port-tag">Social Media</div>
+          <div class="port-name">Wave Lifestyle — IG Pack</div>
+        </div>
+      </div>
+    </div>
+    <div class="port-item reveal" style="transition-delay:.2s">
+      <div class="port-bg p4">💫</div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <div class="port-tag">Graphic Design</div>
+          <div class="port-name">Astral Event Poster Series</div>
+        </div>
+      </div>
+    </div>
+    <div class="port-item reveal" style="transition-delay:.25s">
+      <div class="port-bg p5">🔮</div>
+      <div class="port-overlay">
+        <div class="port-info">
+          <div class="port-tag">Branding</div>
+          <div class="port-name">Void Beauty — Logo System</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE/AFTER -->
+  <div class="ba-strip reveal" style="margin-top:48px;">
+    <div class="ba-card">
+      <div class="ba-label before">Before</div>
+      <div class="ba-visual ba-v1">🌅</div>
+    </div>
+    <div class="ba-card">
+      <div class="ba-label after">After</div>
+      <div class="ba-visual ba-v2">🌅</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-header reveal">
+    <span class="section-label">Client Love</span>
+    <h2 class="section-title">What our clients say</h2>
+    <p class="section-sub">Real results, real satisfaction. Our work speaks through the people we've served.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal" style="transition-delay:.05s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Pixolyze completely transformed my brand. The logo design exceeded every expectation — clean, modern, and exactly the vibe I was going for. Highly recommend!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar av1">S</div>
+        <div>
+          <div class="testi-name">Sarah K.</div>
+          <div class="testi-role">Fashion Brand Owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.1s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The photo editing quality is insane. My product shots went from average to absolutely stunning. Our Instagram engagement doubled within two weeks of the refresh."</p>
+      <div class="testi-author">
+        <div class="testi-avatar av2">M</div>
+        <div>
+          <div class="testi-name">Marco D.</div>
+          <div class="testi-role">E-commerce Entrepreneur</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.15s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Fast delivery, stunning quality, and zero back-and-forth drama. Pixolyze understood my vision immediately and delivered something even better than I imagined."</p>
+      <div class="testi-author">
+        <div class="testi-avatar av3">A</div>
+        <div>
+          <div class="testi-name">Aisha R.</div>
+          <div class="testi-role">Content Creator, 120K followers</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.2s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Our social media content used to be something we stressed about. Now Pixolyze handles everything and every post looks like it came from a top agency."</p>
+      <div class="testi-author">
+        <div class="testi-avatar av1">J</div>
+        <div>
+          <div class="testi-name">James T.</div>
+          <div class="testi-role">Restaurant Owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.25s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I've worked with several designers before, but Pixolyze is in a different league. The attention to detail and creative thinking sets them apart completely."</p>
+      <div class="testi-author">
+        <div class="testi-avatar av2">L</div>
+        <div>
+          <div class="testi-name">Lena M.</div>
+          <div class="testi-role">Creative Director</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.3s">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The before-and-after of my product photos genuinely shocked me. Pixolyze didn't just edit — they elevated. Worth every penny, then some."</p>
+      <div class="testi-author">
+        <div class="testi-avatar av3">R</div>
+        <div>
+          <div class="testi-name">Riya S.</div>
+          <div class="testi-role">Skincare Brand Founder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+  <div class="cta-content reveal">
+    <p class="cta-tagline">Let's Create Something Great</p>
+    <h2 class="cta-title">Let's bring your ideas to life</h2>
+    <p class="cta-sub">Turning ideas into visual reality — one pixel at a time. Ready to start your next project?</p>
+    <button class="btn-primary" style="font-size:1.05rem;padding:16px 44px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Now →</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title reveal-left">Start your <span style="background:linear-gradient(135deg,var(--electric),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">project</span></h2>
+      <p class="section-sub reveal-left" style="margin-bottom:40px;">Have a project in mind? We'd love to hear about it. Reach out through any channel and we'll get back to you within 24 hours.</p>
+      <div class="contact-links">
+        <a href="https://instagram.com/pixolyze" target="_blank" class="contact-link reveal-left" style="transition-delay:.1s">
+          <div class="cl-icon cl-ig">📸</div>
+          <div class="cl-text">
+            <div class="cl-label">Instagram</div>
+            <div class="cl-val">@pixolyze</div>
+          </div>
+        </a>
+        <a href="mailto:hello@pixolyze.com" class="contact-link reveal-left" style="transition-delay:.15s">
+          <div class="cl-icon cl-em">✉️</div>
+          <div class="cl-text">
+            <div class="cl-label">Email</div>
+            <div class="cl-val">hello@pixolyze.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form reveal-right">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your name"/>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label>Service</label>
+        <select>
+          <option value="">Select a service</option>
+          <option>Photo Editing</option>
+          <option>Graphic Design</option>
+          <option>Logo & Branding</option>
+          <option>Social Media Content</option>
+          <option>Multiple Services</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Your Project</label>
+        <textarea placeholder="Describe your vision, goals, and any details that would help us understand your needs..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit(event)">Send Message ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pixolyze</div>
+  <p class="footer-tagline">Design. Edit. Inspire.</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="https://instagram.com/pixolyze" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-copy">© 2025 Pixolyze. All rights reserved. Crafted with ✦ passion.</p>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+  });
+  function animRing(){
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); }
+  document.getElementById('mobileClose').addEventListener('click', closeMobile);
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  reveals.forEach(el=>io.observe(el));
+
+  // Form submit
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+    setTimeout(()=>{
+      btn.textContent = 'Send Message ✦';
+      btn.style.background = 'linear-gradient(135deg,var(--violet),var(--blue))';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
