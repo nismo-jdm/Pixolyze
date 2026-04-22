@@ -863,20 +863,20 @@
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="Your name"/>
+          <input id="firstName" type="text" placeholder="Your name"/>
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Last name"/>
+          <input id="lastName" type="text" placeholder="Last name"/>
         </div>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" placeholder="you@example.com"/>
+        <input id="senderEmail" type="email" placeholder="you@example.com"/>
       </div>
       <div class="form-group">
         <label>Service</label>
-        <select>
+        <select id="service">
           <option value="">Select a service</option>
           <option>Photo Editing</option>
           <option>Graphic Design</option>
@@ -887,9 +887,10 @@
       </div>
       <div class="form-group">
         <label>Tell Us About Your Project</label>
-        <textarea placeholder="Describe your vision, goals, and any details that would help us understand your needs..."></textarea>
+        <textarea id="message" placeholder="Describe your vision, goals, and any details that would help us understand your needs..."></textarea>
       </div>
-      <button class="submit-btn" onclick="handleSubmit(event)">Send Message ✦</button>
+      <button class="submit-btn" id="submitBtn" onclick="handleSubmit(event)">Send Message ✦</button>
+      <p id="formStatus" style="margin-top:12px;text-align:center;font-size:.85rem;display:none;"></p>
     </div>
   </div>
 </section>
@@ -909,8 +910,25 @@
   <p class="footer-copy">© 2025 Pixolyze. All rights reserved. Crafted with ✦ passion.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // Custom cursor
+  // ── EmailJS Setup ──────────────────────────────────────────────
+  // SETUP STEPS (free, takes 2 min):
+  // 1. Go to https://www.emailjs.com and create a free account
+  // 2. Add a Gmail service → connect pixolyze@gmail.com → copy Service ID
+  // 3. Create an Email Template with these variables:
+  //      {{from_name}}, {{from_email}}, {{service}}, {{message}}
+  //    Set "To Email" in template to: pixolyze@gmail.com
+  //    Copy the Template ID
+  // 4. Go to Account → copy your Public Key
+  // 5. Replace the three values below:
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← paste here
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← paste here
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← paste here
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  // ── Custom cursor ──────────────────────────────────────────────
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx=0,my=0,rx=0,ry=0;
@@ -925,33 +943,98 @@
   }
   animRing();
 
-  // Nav scroll
+  // ── Nav scroll ─────────────────────────────────────────────────
   const nav = document.getElementById('nav');
   window.addEventListener('scroll',()=>{
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // Mobile menu
+  // ── Mobile menu ────────────────────────────────────────────────
   function closeMobile(){ document.getElementById('mobileMenu').classList.remove('open'); }
   document.getElementById('mobileClose').addEventListener('click', closeMobile);
 
-  // Scroll reveal
+  // ── Scroll reveal ──────────────────────────────────────────────
   const reveals = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
   },{threshold:.12});
   reveals.forEach(el=>io.observe(el));
 
-  // Form submit
-  function handleSubmit(e){
+  // ── Form Submit → sends email to pixolyze@gmail.com ───────────
+  async function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target;
-    btn.textContent = '✓ Message Sent!';
-    btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
-    setTimeout(()=>{
+
+    const btn       = document.getElementById('submitBtn');
+    const status    = document.getElementById('formStatus');
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('senderEmail').value.trim();
+    const service   = document.getElementById('service').value;
+    const message   = document.getElementById('message').value.trim();
+
+    // Basic validation
+    if (!firstName || !email || !message) {
+      status.style.display = 'block';
+      status.style.color = '#f87171';
+      status.textContent = '⚠️ Please fill in your name, email, and message.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      status.style.display = 'block';
+      status.style.color = '#f87171';
+      status.textContent = '⚠️ Please enter a valid email address.';
+      return;
+    }
+
+    // Loading state
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    btn.style.opacity = '.7';
+    status.style.display = 'none';
+
+    const templateParams = {
+      from_name:  firstName + ' ' + lastName,
+      from_email: email,
+      service:    service || 'Not specified',
+      message:    message,
+      to_email:   'pixolyze@gmail.com'
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+      // Success
+      btn.textContent = '✓ Message Sent!';
+      btn.style.opacity = '1';
+      btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+      btn.style.boxShadow = '0 0 30px rgba(16,185,129,.4)';
+      status.style.display = 'block';
+      status.style.color = '#4ade80';
+      status.textContent = '✦ Thank you! Pixolyze will get back to you within 24 hours.';
+
+      // Reset form
+      document.getElementById('firstName').value = '';
+      document.getElementById('lastName').value = '';
+      document.getElementById('senderEmail').value = '';
+      document.getElementById('service').value = '';
+      document.getElementById('message').value = '';
+
+      setTimeout(()=>{
+        btn.textContent = 'Send Message ✦';
+        btn.style.background = 'linear-gradient(135deg,var(--violet),var(--blue))';
+        btn.style.boxShadow = '0 0 30px rgba(124,58,237,.3)';
+        btn.disabled = false;
+      }, 4000);
+
+    } catch(err) {
       btn.textContent = 'Send Message ✦';
-      btn.style.background = 'linear-gradient(135deg,var(--violet),var(--blue))';
-    }, 3000);
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      status.style.display = 'block';
+      status.style.color = '#f87171';
+      status.textContent = '❌ Failed to send. Please email us directly at pixolyze@gmail.com';
+      console.error('EmailJS error:', err);
+    }
   }
 </script>
 </body>
