@@ -63,7 +63,7 @@
   .nav-links a:hover { color:var(--light); }
   .nav-cta { background:linear-gradient(135deg,var(--violet),var(--blue)); color:#fff; border:none; padding:10px 24px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:.875rem; font-weight:500; cursor:none; transition:opacity .2s, transform .2s, box-shadow .2s; box-shadow:0 0 20px rgba(124,58,237,.3); }
   .nav-cta:hover { opacity:.9; transform:translateY(-1px); box-shadow:0 0 30px rgba(124,58,237,.5); }
-  .hamburger { display:none; flex-direction:column; gap:5px; cursor:none; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; -webkit-tap-highlight-color:transparent; }
   .hamburger span { width:24px; height:2px; background:var(--light); border-radius:2px; transition:.3s; }
 
   /* HERO */
@@ -433,6 +433,7 @@
     background: rgba(255,255,255,.03);
     transition: background .25s, border-color .25s, color .25s, transform .2s;
     letter-spacing:-.01em;
+    cursor:pointer; -webkit-tap-highlight-color:transparent;
   }
   .mobile-menu-nav a .m-arrow {
     font-size:.9rem; color:var(--electric); opacity:0; transform:translateX(-6px);
@@ -469,13 +470,23 @@
   }
 
   .mobile-close {
-    position:absolute; top:24px; right:24px; z-index:2;
-    background: rgba(124,58,237,.12); border:1px solid rgba(124,58,237,.25);
-    color:var(--light); width:40px; height:40px; border-radius:50%;
+    position:absolute; top:24px; right:20px; z-index:10;
+    background: linear-gradient(135deg,rgba(124,58,237,.25),rgba(79,70,229,.2));
+    border:1.5px solid rgba(168,85,247,.5);
+    color:var(--light); width:46px; height:46px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    font-size:1rem; cursor:none; transition: background .2s, border-color .2s;
+    font-size:1.1rem; font-weight:700;
+    cursor:pointer;
+    transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 0 20px rgba(124,58,237,.25);
+    -webkit-tap-highlight-color: transparent;
   }
-  .mobile-close:hover { background:rgba(124,58,237,.25); border-color:var(--electric); }
+  .mobile-close:hover, .mobile-close:active {
+    background:linear-gradient(135deg,rgba(124,58,237,.45),rgba(79,70,229,.35));
+    border-color:var(--electric);
+    transform:scale(1.08);
+    box-shadow:0 0 28px rgba(168,85,247,.4);
+  }
 
   /* RESPONSIVE */
   @media(max-width:900px) {
@@ -613,7 +624,7 @@
         <div class="lab">Client Satisfaction</div>
       </div>
       <div class="about-stat-chip chip3">
-        <div class="num">2+</div>
+        <div class="num">4+</div>
         <div class="lab">Years Experience</div>
       </div>
     </div>
@@ -839,11 +850,11 @@
             <div class="cl-val">@pixolyze</div>
           </div>
         </a>
-        <a href="mailto:hello@pixolyze.com" class="contact-link reveal-left" style="transition-delay:.15s">
+        <a href="mailto:pixolyze@gmail.com" class="contact-link reveal-left" style="transition-delay:.15s">
           <div class="cl-icon cl-em">✉️</div>
           <div class="cl-text">
             <div class="cl-label">Email</div>
-            <div class="cl-val">hello@pixolyze.com</div>
+            <div class="cl-val">pixolyze@gmail.com</div>
           </div>
         </a>
       </div>
